@@ -682,6 +682,7 @@ a{color:#23629A}a:hover{color:#14201B}
 <label class="sl-f" data-org>Type d'événement<select name="type"><option value="">Choisis…</option><option>Ultra / bikepacking</option><option>Brevet / randonnée</option><option>Cyclosportive / course</option><option>Sorties de club</option><option>Autre</option></select></label>
 <label style="display: flex; gap: 10px; align-items: flex-start; font-size: 13px; line-height: 1.45; color: #4C5852"><input type="checkbox" name="consent" required style="margin-top: 2px; width: 18px; height: 18px; flex: none; accent-color: #14201B">J'accepte de recevoir les e-mails de Sillage. Désinscription en un clic, à tout moment.</label>
 <p class="sl-nl-err" role="alert" style="margin: 0; font-size: 14px; font-weight: 700; color: #B5491F"></p>
+<input type="text" name="site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0">
 <button type="submit">Me prévenir</button>
 <p style="margin: 0; font-size: 12px; color: #4C5852; text-align: center">Pas de spam : un e-mail à la sortie, et quelques nouvelles d'ici là.</p>
 </form>
@@ -876,9 +877,21 @@ class Component extends DCLogic {
       var email = form.email.value.trim();
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = 'Indique une adresse e-mail valide.'; form.email.focus(); return; }
       if (!form.consent.checked) { err.textContent = 'Coche la case pour accepter de recevoir nos e-mails.'; return; }
-      // Branchement Brevo à venir : liste « cyclistes » ou « organisateurs » selon kind().
-      okMsg.textContent = kind() === 'organisateur' ? 'On te prévient avant tout le monde, et on revient vers toi pour parler de ton événement.' : 'On te prévient avant tout le monde, avec un accès pour tester l\u2019app en avant-première.';
-      form.hidden = true; ok.hidden = false;
+      var btn = form.querySelector('button[type=submit]'), k = kind();
+      btn.disabled = true; btn.textContent = 'Envoi…'; err.textContent = '';
+      fetch('https://bsypkdsnhiepvcnhmfsm.supabase.co/functions/v1/newsletter-signup', {
+        method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ profil: k, email: email, prenom: form.prenom.value, evenement: form.evenement.value, type: form.type.value, consent: true, site: form.site.value })
+      }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { r: r, j: j }; }); })
+        .then(function (x) {
+          if (!x.r.ok || !x.j.ok) throw x.j.error || 'erreur';
+          okMsg.textContent = k === 'organisateur' ? 'On te prévient avant tout le monde, et on revient vers toi pour parler de ton événement.' : 'On te prévient avant tout le monde, avec un accès pour tester l\u2019app en avant-première.';
+          form.hidden = true; ok.hidden = false;
+        })
+        .catch(function (e) {
+          err.textContent = e === 'email' ? 'Indique une adresse e-mail valide.' : 'L\u2019inscription n\u2019est pas passée. Réessaie dans un instant, ou écris-nous à hello@sillage-ride.eu.';
+        })
+        .then(function () { btn.disabled = false; btn.textContent = 'Me prévenir'; });
     });
   }
   startSortie(reduce) {
