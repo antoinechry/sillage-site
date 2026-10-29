@@ -1,6 +1,6 @@
 # Génère les pages légales de la vitrine Sillage (FR + EN).
 # Usage : python3 legal_pages.py <racine du dépôt sillage-site>
-import os, sys
+import os, sys, json
 
 ROOT = sys.argv[1]
 DATE_FR = "29 octobre 2026"
@@ -354,7 +354,88 @@ PAGES = [
         f"Version of {DATE_EN}", DEL_EN, "/supprimer-mon-compte/", "Français", "/", FOOT_EN, "del")),
 ]
 
-import re
+# ---------------------------------------------------------------- Confirmation de l'adresse (lien de l'e-mail d'inscription)
+CONFIRM_CSS = """<style>
+.st{display:none}.st.on{display:block}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:999px;background:#E0A21B;color:#14201B;font-weight:700;font-size:17px;text-decoration:none;margin:6px 0 18px}
+.btn:hover{background:#c98f12;color:#14201B}
+.soon{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}
+.soon span{font-size:14px;font-weight:600;border:1px solid #CDD4CE;border-radius:999px;padding:8px 14px;color:#4C5852}
+.spin{width:28px;height:28px;border:3px solid #E3E8E4;border-top-color:#E0A21B;border-radius:50%;animation:sp 1s linear infinite;margin:8px 0 18px}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+</style>"""
+
+def confirm_body(lang):
+    fr = lang == 'fr'
+    app = "https://antoinechry.github.io/plan-my-ride/"
+    if fr:
+        T = dict(wait="On vérifie ton lien…", okh="Merci{p} !", okl="Ton adresse est confirmée et ton compte Sillage est prêt.",
+            okt="Il ne te reste plus qu'à te connecter avec ton e-mail et ton mot de passe, puis à importer ta première trace GPX.",
+            btn="Rejoindre Sillage", soon="Bientôt sur", already="Ton adresse était déjà confirmée : tu peux te connecter.",
+            errh="Ce lien ne marche plus", invalid="Il a peut-être déjà servi, ou il est incomplet. Essaie simplement de te connecter : si ton adresse est confirmée, tout est prêt.",
+            expired="Il était valable 48 heures. Connecte-toi à Sillage : tu pourras te faire renvoyer un nouveau lien.",
+            neterr="Impossible de joindre Sillage pour l'instant. Réessaie dans un moment.", btn2="Aller sur Sillage",
+            help='Un souci ? Écris-nous à <a href="mailto:hello@sillage-ride.eu">hello@sillage-ride.eu</a>.')
+    else:
+        T = dict(wait="Checking your link…", okh="Thank you{p}!", okl="Your address is confirmed and your Sillage account is ready.",
+            okt="All that's left is to sign in with your e-mail and password, then import your first GPX route.",
+            btn="Join Sillage", soon="Coming soon to", already="Your address was already confirmed: you can sign in.",
+            errh="This link no longer works", invalid="It may have been used already, or it is incomplete. Just try signing in: if your address is confirmed, you're all set.",
+            expired="It was valid for 48 hours. Sign in to Sillage: you'll be able to get a new link.",
+            neterr="Sillage can't be reached right now. Please try again in a moment.", btn2="Go to Sillage",
+            help='Any trouble? Write to <a href="mailto:hello@sillage-ride.eu">hello@sillage-ride.eu</a>.')
+    appl = app
+    return CONFIRM_CSS + f"""
+<div id="sWait" class="st on"><div class="spin" aria-hidden="true"></div><p>{T['wait']}</p></div>
+<div id="sOk" class="st">
+<p id="okAlready" class="promise" hidden>{T['already']}</p>
+<p>{T['okt']}</p>
+<a class="btn" href="{appl}">{T['btn']}</a>
+<p class="kicker">{T['soon']}</p>
+<div class="soon"><span>App Store</span><span>Google Play</span></div>
+</div>
+<div id="sErr" class="st">
+<p id="errTxt"></p>
+<a class="btn" href="{appl}">{T['btn2']}</a>
+</div>
+<p style="margin-top:28px;font-size:15px;color:#4C5852">{T['help']}</p>
+<script>
+(function(){{
+  var T={json.dumps(T, ensure_ascii=False)};
+  var h1=document.querySelector('h1'), lead=document.querySelector('.lead');
+  function show(id){{['sWait','sOk','sErr'].forEach(function(k){{document.getElementById(k).classList.toggle('on',k===id);}});}}
+  function err(kind){{h1.textContent=T.errh;lead.textContent='';document.getElementById('errTxt').textContent=T[kind]||T.invalid;show('sErr');}}
+  var t=new URLSearchParams(location.search).get('t');
+  if(t) history.replaceState(null,'',location.pathname);
+  if(!t) return err('invalid');
+  fetch('https://bsypkdsnhiepvcnhmfsm.supabase.co/functions/v1/confirm-email',{{method:'POST',headers:{{'content-type':'application/json'}},body:JSON.stringify({{t:t}})}})
+  .then(function(r){{return r.json();}})
+  .then(function(d){{
+    if(!d||!d.ok) return err(d&&d.error==='expired'?'expired':'invalid');
+    var p=(d.prenom||'').trim();
+    h1.textContent=T.okh.replace('{{p}}',p?{'" "' if fr else '" "'}+p:'');
+    lead.textContent=T.okl;
+    if(d.already) document.getElementById('okAlready').hidden=false;
+    show('sOk');
+  }})
+  .catch(function(){{err('neterr');}});
+}})();
+</script>
+"""
+
+def confirm_page(lang):
+    fr = lang == 'fr'
+    html = page(lang, "Compte confirmé · Sillage" if fr else "Account confirmed · Sillage",
+        "Confirmation de ton adresse e-mail Sillage." if fr else "Confirmation of your Sillage e-mail address.",
+        "Sillage", "Confirmation" , "", "", confirm_body(lang),
+        "/en/account-confirmed/" if fr else "/compte-confirme/", "English" if fr else "Français", "/",
+        FOOT_FR if fr else FOOT_EN, "")
+    return html.replace('<p class="date"></p>\n', '')
+
+PAGES += [("compte-confirme/index.html", confirm_page("fr")), ("en/account-confirmed/index.html", confirm_page("en"))]
+
+import re, json
 def nbsp_fr(html):
     # espaces insécables avant ? : ! ; » et après « dans le contenu des pages françaises
     a, b = html.index("<main>"), html.index("</main>")
