@@ -168,6 +168,8 @@ CONF_FR = """
 <h2>Ce qu'on garde, et pourquoi</h2>
 <h3>Ton compte</h3>
 <p>Ton e-mail et ton mot de passe (chiffré : personne ne peut le lire, pas même nous), ton prénom si tu le donnes, pour te connecter et te reconnaître sur tous tes appareils.</p>
+<h3>La visite sans compte</h3>
+<p>Si tu essaies Sillage sans compte, on crée un compte technique anonyme (sans e-mail ni nom) pour t'attribuer ta part de prévisions météo. Tes traces ne sont pas enregistrées. Pour éviter les abus, on compte les visites sans compte par adresse IP : l'adresse est transformée en une empreinte illisible qui change chaque jour, et effacée au bout de 2 jours.</p>
 <h3>Tes parcours</h3>
 <p>Les traces GPX que tu importes (points, distance, dénivelé, nom) et la date de leur dernière utilisation, pour les retrouver partout. Tes parcours ne sont visibles que par toi.</p>
 <h3>Tes alertes météo</h3>
@@ -184,6 +186,7 @@ CONF_FR = """
 <thead><tr><th>Donnée</th><th>Durée</th></tr></thead>
 <tbody>
 <tr><td>Compte, parcours, alertes</td><td>Jusqu'à la suppression de ton compte. Un compte sans aucune connexion pendant <strong>3 ans</strong> est supprimé, après un e-mail d'avertissement un mois avant.</td></tr>
+<tr><td>Visite sans compte</td><td>Compte technique effacé après <strong>30 jours</strong> sans visite ; empreinte de l'adresse IP effacée après 2 jours</td></tr>
 <tr><td>Journal d'utilisation</td><td>12 mois</td></tr>
 <tr><td>Statistiques de visite</td><td>25 mois</td></tr>
 <tr><td>Lettre d'info</td><td>Jusqu'à ta désinscription</td></tr>
@@ -231,6 +234,8 @@ CONF_EN = """
 <h2>What we keep, and why</h2>
 <h3>Your account</h3>
 <p>Your e-mail and password (encrypted: nobody can read it, not even us), and your first name if you give it, to sign you in and recognise you on all your devices.</p>
+<h3>Visiting without an account</h3>
+<p>If you try Sillage without an account, we create an anonymous technical account (no e-mail, no name) to give you your share of weather forecasts. Your routes are not saved. To prevent abuse, we count visits without an account per IP address: the address is turned into an unreadable fingerprint that changes every day, and erased after 2 days.</p>
 <h3>Your routes</h3>
 <p>The GPX tracks you import (points, distance, elevation, name) and when you last used them, so you find them everywhere. Your routes are visible only to you.</p>
 <h3>Your weather alerts</h3>
@@ -247,6 +252,7 @@ CONF_EN = """
 <thead><tr><th>Data</th><th>Retention</th></tr></thead>
 <tbody>
 <tr><td>Account, routes, alerts</td><td>Until you delete your account. An account with no sign-in for <strong>3 years</strong> is deleted, after a warning e-mail one month before.</td></tr>
+<tr><td>Visit without an account</td><td>Technical account erased after <strong>30 days</strong> without a visit; IP fingerprint erased after 2 days</td></tr>
 <tr><td>Usage log</td><td>12 months</td></tr>
 <tr><td>Visit statistics</td><td>25 months</td></tr>
 <tr><td>Newsletter</td><td>Until you unsubscribe</td></tr>
