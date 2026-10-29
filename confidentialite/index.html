@@ -26,7 +26,7 @@ h1{font-weight:800;font-size:clamp(34px,6vw,52px);line-height:1.05;letter-spacin
 h2{font-weight:700;font-size:23px;line-height:1.25;letter-spacing:-.01em;margin:40px 0 12px;padding-top:20px;border-top:1px solid #E3E8E4}
 h3{font-weight:700;font-size:18px;margin:22px 0 6px}
 p{margin:0 0 14px}
-ul{margin:0 0 14px;padding-left:22px}
+ul,ol{margin:0 0 14px;padding-left:22px}
 li{margin:0 0 8px}
 .card{background:#F1F3F0;border-radius:16px;padding:18px 20px;margin:0 0 16px}
 .card p:last-child{margin:0}
@@ -61,14 +61,14 @@ footer{background:#121B17;color:#A3AEA8}
 <p class="lead">Ce que Sillage garde de tes données, pourquoi, combien de temps, et comment tout effacer.</p>
 <p class="date">Version du 29 octobre 2026</p>
 
-<div class="promise"><p style="margin:0"><strong>En bref :</strong> on ne garde que ce qu'il faut pour te donner la météo sur ta trace. Pas de publicité, pas de revente, pas de pistage.</p></div>
+<div class="promise"><p style="margin:0"><strong>En bref :</strong> on ne garde que ce qu'il faut pour te donner la météo sur ta trace. Pas de publicité, pas de revente, pas de pistage.</p></div>
 
-<h2>Qui est responsable ?</h2>
-<p>L'association <strong>Beyond the Track</strong>, éditrice de Sillage (coordonnées dans les <a href="/mentions-legales/">mentions légales</a>). Pour toute question sur tes données : <a href="mailto:hello@sillage-ride.eu">hello@sillage-ride.eu</a>.</p>
+<h2>Qui est responsable ?</h2>
+<p>L'association <strong>Beyond the Track</strong>, éditrice de Sillage (coordonnées dans les <a href="/mentions-legales/">mentions légales</a>). Pour toute question sur tes données : <a href="mailto:hello@sillage-ride.eu">hello@sillage-ride.eu</a>.</p>
 
 <h2>Ce qu'on garde, et pourquoi</h2>
 <h3>Ton compte</h3>
-<p>Ton e-mail et ton mot de passe (chiffré : personne ne peut le lire, pas même nous), ton prénom si tu le donnes, pour te connecter et te reconnaître sur tous tes appareils.</p>
+<p>Ton e-mail et ton mot de passe (chiffré : personne ne peut le lire, pas même nous), ton prénom si tu le donnes, pour te connecter et te reconnaître sur tous tes appareils.</p>
 <h3>Tes parcours</h3>
 <p>Les traces GPX que tu importes (points, distance, dénivelé, nom) et la date de leur dernière utilisation, pour les retrouver partout. Tes parcours ne sont visibles que par toi.</p>
 <h3>Tes alertes météo</h3>
@@ -78,7 +78,7 @@ footer{background:#121B17;color:#A3AEA8}
 <h3>La lettre d'info (si tu t'y inscris)</h3>
 <p>Ton e-mail, ton prénom, ton profil (cycliste ou organisateur·rice) et, pour les organisateurs, le nom et le type de ton événement.</p>
 <h3>Les statistiques de visite</h3>
-<p>Un identifiant aléatoire (sans cookie), la page vue, le type d'appareil. <strong>Sur le site web uniquement</strong>, on ajoute la ville approximative déduite de ton adresse IP ; l'adresse IP elle-même n'est jamais conservée. <strong>Dans l'app iPhone et Android, aucune localisation n'est relevée.</strong></p>
+<p>Un identifiant aléatoire (sans cookie), la page vue, le type d'appareil. <strong>Sur le site web uniquement</strong>, on ajoute la ville approximative déduite de ton adresse IP ; l'adresse IP elle-même n'est jamais conservée. <strong>Dans l'app iPhone et Android, aucune localisation n'est relevée.</strong></p>
 
 <h2>Combien de temps</h2>
 <table>
@@ -93,26 +93,27 @@ footer{background:#121B17;color:#A3AEA8}
 
 <h2>Sur quelle base</h2>
 <ul>
-<li><strong>Le service que tu utilises</strong> : compte, parcours, alertes, journal d'utilisation.</li>
-<li><strong>Ton accord</strong> : lettre d'info et notifications. Tu peux le retirer à tout moment.</li>
-<li><strong>Notre intérêt légitime</strong> : sécurité et statistiques de visite anonymes. Tu peux t'y opposer en nous écrivant.</li>
+<li><strong>Le service que tu utilises</strong> : compte, parcours, alertes, journal d'utilisation.</li>
+<li><strong>Ton accord</strong> : lettre d'info et notifications. Tu peux le retirer à tout moment.</li>
+<li><strong>Notre intérêt légitime</strong> : sécurité et statistiques de visite anonymes. Tu peux t'y opposer en nous écrivant.</li>
 </ul>
 
 <h2>Qui d'autre voit tes données</h2>
-<p>Seulement les services techniques qui font tourner Sillage, chacun pour sa tâche :</p>
+<p>Seulement les services techniques qui font tourner Sillage, chacun pour sa tâche :</p>
 <ul>
-<li><strong>Supabase</strong> (serveurs à Francfort, Allemagne) : stockage du compte, des parcours et des alertes.</li>
-<li><strong>Brevo</strong> (France) : envoi des e-mails (compte, lettre d'info).</li>
-<li><strong>Google Firebase</strong> : envoi des notifications sur iPhone et Android.</li>
-<li><strong>OVH</strong> (France) : nom de domaine et boîte e-mail.</li>
-<li><strong>GitHub</strong> : hébergement du site.</li>
-<li><strong>ipapi.co / ipwho.is</strong> : ville approximative des visites du site web.</li>
-<li><strong>Services météo et cartes</strong> (Open-Meteo, meteoblue, MET Norway, OpenStreetMap, IGN…) : ils reçoivent des points de coordonnées le long de ta trace pour calculer la météo ou afficher la carte. Jamais ton nom ni ton e-mail.</li>
+<li><strong>Supabase</strong> (serveurs à Francfort, Allemagne) : stockage du compte, des parcours et des alertes.</li>
+<li><strong>Brevo</strong> (France) : envoi des e-mails (compte, lettre d'info).</li>
+<li><strong>Google Firebase</strong> : envoi des notifications sur iPhone et Android.</li>
+<li><strong>OVH</strong> (France) : nom de domaine et boîte e-mail.</li>
+<li><strong>GitHub</strong> : hébergement du site.</li>
+<li><strong>ipapi.co / ipwho.is</strong> : ville approximative des visites du site web.</li>
+<li><strong>Services météo et cartes</strong> (Open-Meteo, meteoblue, MET Norway, OpenStreetMap, IGN…) : ils reçoivent des points de coordonnées le long de ta trace pour calculer la météo ou afficher la carte. Jamais ton nom ni ton e-mail.</li>
 </ul>
 <p>Certains de ces services sont situés aux États-Unis. Ces transferts sont encadrés par les garanties prévues par le RGPD (décision d'adéquation EU-US Data Privacy Framework ou clauses contractuelles types).</p>
 
 <h2>Tes droits</h2>
-<p>Tu peux consulter, corriger, exporter ou supprimer tes données, et t'opposer à certains traitements. Pour cela, écris à <a href="mailto:hello@sillage-ride.eu">hello@sillage-ride.eu</a> : on te répond sous un mois.</p>
+<p><strong>Supprimer ton compte</strong> se fait directement dans Sillage : page Moi → « Supprimer mon compte ». Tout est effacé immédiatement. <a href="/supprimer-mon-compte/">Comment faire</a>.</p>
+<p>Tu peux aussi consulter, corriger ou exporter tes données, et t'opposer à certains traitements. Pour cela, écris à <a href="mailto:hello@sillage-ride.eu">hello@sillage-ride.eu</a> : on te répond sous un mois.</p>
 <p>Si tu estimes que tes droits ne sont pas respectés, tu peux saisir la <a href="https://www.cnil.fr/fr/plaintes">CNIL</a>.</p>
 
 <h2>Sur ton appareil</h2>
@@ -124,7 +125,7 @@ footer{background:#121B17;color:#A3AEA8}
 </main>
 <footer><div class="foot">
 <span>© 2026 Sillage · La météo sur ta trace.</span>
-<nav aria-label="Liens légaux"><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/" aria-current="page">Confidentialité</a><a href="mailto:hello@sillage-ride.eu">Contact</a></nav>
+<nav aria-label="Liens légaux"><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/" aria-current="page">Confidentialité</a><a href="/supprimer-mon-compte/">Supprimer mon compte</a><a href="mailto:hello@sillage-ride.eu">Contact</a></nav>
 </div></footer>
 </body>
 </html>
