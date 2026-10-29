@@ -117,7 +117,7 @@ Contact : <a href="mailto:hello@sillage-ride.eu">hello@sillage-ride.eu</a></p>
 <h2>Crédits</h2>
 <ul>
 <li>Fonds de carte © contributeurs <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, CyclOSM, IGN (Géoplateforme).</li>
-<li>Données météo : <a href="https://open-meteo.com">Open-Meteo</a> (licence CC BY 4.0), meteoblue, MET Norway, Météo-France et les autres services météorologiques nationaux cités dans l'application.</li>
+<li>Données météo : <a href="https://open-meteo.com">Open-Meteo</a> (licence CC BY 4.0), MET Norway, Météo-France et les autres services météorologiques nationaux cités dans l'application.</li>
 <li>Polices : Archivo, IBM Plex Mono, Atkinson Hyperlegible (licence SIL Open Font).</li>
 </ul>
 
@@ -150,7 +150,7 @@ Contact: <a href="mailto:hello@sillage-ride.eu">hello@sillage-ride.eu</a></p>
 <h2>Credits</h2>
 <ul>
 <li>Map tiles © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, CyclOSM, IGN (Géoplateforme).</li>
-<li>Weather data: <a href="https://open-meteo.com">Open-Meteo</a> (CC BY 4.0 licence), meteoblue, MET Norway, Météo-France and the other national weather services named in the app.</li>
+<li>Weather data: <a href="https://open-meteo.com">Open-Meteo</a> (CC BY 4.0 licence), MET Norway, Météo-France and the other national weather services named in the app.</li>
 <li>Fonts: Archivo, IBM Plex Mono, Atkinson Hyperlegible (SIL Open Font Licence).</li>
 </ul>
 
@@ -173,7 +173,7 @@ CONF_FR = """
 <h3>Tes alertes météo</h3>
 <p>Le parcours, l'heure de départ, les jours, ta langue, tes unités et ton fuseau horaire, plus l'identifiant technique de ton appareil, pour t'envoyer la notification au bon moment.</p>
 <h3>Le journal d'utilisation</h3>
-<p>Ouvertures de l'app, imports de GPX, calculs météo et consommation de prévisions meteoblue, pour gérer les quotas, la sécurité et améliorer l'app.</p>
+<p>Ouvertures de l'app, imports de GPX et calculs météo, pour la sécurité du service et pour améliorer l'app.</p>
 <h3>La lettre d'info (si tu t'y inscris)</h3>
 <p>Ton e-mail, ton prénom, ton profil (cycliste ou organisateur·rice) et, pour les organisateurs, le nom et le type de ton événement.</p>
 <h3>Les statistiques de visite</h3>
@@ -206,7 +206,7 @@ CONF_FR = """
 <li><strong>OVH</strong> (France) : nom de domaine et boîte e-mail.</li>
 <li><strong>GitHub</strong> : hébergement du site.</li>
 <li><strong>ipapi.co / ipwho.is</strong> : ville approximative des visites du site web.</li>
-<li><strong>Services météo et cartes</strong> (Open-Meteo, meteoblue, MET Norway, OpenStreetMap, IGN…) : ils reçoivent des points de coordonnées le long de ta trace pour calculer la météo ou afficher la carte. Jamais ton nom ni ton e-mail.</li>
+<li><strong>Services météo et cartes</strong> (Open-Meteo, MET Norway, OpenStreetMap, IGN…) : ils reçoivent des points de coordonnées le long de ta trace pour calculer la météo ou afficher la carte. Jamais ton nom ni ton e-mail.</li>
 </ul>
 <p>Certains de ces services sont situés aux États-Unis. Ces transferts sont encadrés par les garanties prévues par le RGPD (décision d'adéquation EU-US Data Privacy Framework ou clauses contractuelles types).</p>
 
@@ -236,7 +236,7 @@ CONF_EN = """
 <h3>Your weather alerts</h3>
 <p>The route, start time, days, language, units and time zone, plus the technical identifier of your device, to send you the notification at the right time.</p>
 <h3>Usage log</h3>
-<p>App launches, GPX imports, weather calculations and meteoblue forecast usage, to manage quotas, keep the service secure and improve the app.</p>
+<p>App launches, GPX imports and weather calculations, to keep the service secure and improve the app.</p>
 <h3>Newsletter (if you sign up)</h3>
 <p>Your e-mail, first name, profile (rider or organiser) and, for organisers, the name and type of your event.</p>
 <h3>Visit statistics</h3>
@@ -269,7 +269,7 @@ CONF_EN = """
 <li><strong>OVH</strong> (France): domain name and mailbox.</li>
 <li><strong>GitHub</strong>: website hosting.</li>
 <li><strong>ipapi.co / ipwho.is</strong>: approximate city of website visits.</li>
-<li><strong>Weather and map services</strong> (Open-Meteo, meteoblue, MET Norway, OpenStreetMap, IGN…): they receive coordinates along your route to compute the weather or display the map. Never your name or e-mail.</li>
+<li><strong>Weather and map services</strong> (Open-Meteo, MET Norway, OpenStreetMap, IGN…): they receive coordinates along your route to compute the weather or display the map. Never your name or e-mail.</li>
 </ul>
 <p>Some of these services are based in the United States. These transfers are covered by the safeguards of the GDPR (EU-US Data Privacy Framework adequacy decision or standard contractual clauses).</p>
 
