@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy · Sillage</title>
+<meta name="description" content="What Sillage keeps of your data, why and for how long.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#FFFFFF;color:#14201B;font-family:Archivo,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.6;-webkit-text-size-adjust:100%}
+a{color:#23629A}a:hover{color:#14201B}
+header{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid #CDD4CE}
+.bar{max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#14201B;font-weight:800;font-size:24px;letter-spacing:-.03em}
+.lang{font-size:14px;font-weight:600;text-decoration:none;color:#14201B;border:1px solid #CDD4CE;border-radius:999px;padding:8px 14px;min-height:40px;display:inline-flex;align-items:center}
+main{max-width:760px;margin:0 auto;padding:48px 24px 72px}
+.kicker{font-family:"IBM Plex Mono",ui-monospace,monospace;font-weight:500;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#8A5A00;margin:0 0 10px}
+h1{font-weight:800;font-size:clamp(34px,6vw,52px);line-height:1.05;letter-spacing:-.03em;margin:0 0 16px}
+.lead{font-size:19px;color:#4C5852;margin:0 0 8px}
+.date{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px;color:#4C5852;margin:0 0 36px}
+h2{font-weight:700;font-size:23px;line-height:1.25;letter-spacing:-.01em;margin:40px 0 12px;padding-top:20px;border-top:1px solid #E3E8E4}
+h3{font-weight:700;font-size:18px;margin:22px 0 6px}
+p{margin:0 0 14px}
+ul{margin:0 0 14px;padding-left:22px}
+li{margin:0 0 8px}
+.card{background:#F1F3F0;border-radius:16px;padding:18px 20px;margin:0 0 16px}
+.card p:last-child{margin:0}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:15px}
+.promise{background:#FBF1DA;border-left:4px solid #E0A21B;border-radius:14px;padding:16px 18px;margin:0 0 24px}
+table{width:100%;border-collapse:collapse;margin:0 0 16px;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:10px 8px;border-bottom:1px solid #E3E8E4}
+th{font-weight:700;font-size:14px;color:#4C5852}
+footer{background:#121B17;color:#A3AEA8}
+.foot{max-width:1200px;margin:0 auto;padding:32px 24px 48px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;font-size:14px}
+.foot a{color:#A3AEA8}
+.foot nav{display:flex;flex-wrap:wrap;gap:24px}
+.foot a[aria-current]{color:#EEF1EC;font-weight:600}
+@media (max-width:560px){main{padding:32px 16px 56px}.bar{padding:10px 16px}.foot{padding:28px 16px 40px}table{font-size:14px}th,td{padding:8px 4px}}
+</style>
+</head>
+<body>
+<header><div class="bar">
+<a class="brand" href="/"><svg width="40" height="37" viewBox="0 0 64 60" aria-hidden="true">
+<circle cx="17" cy="31" r="10" fill="#14201B"></circle>
+<rect x="5" y="30" width="50" height="13" rx="6.5" fill="#14201B"></rect>
+<circle cx="38" cy="24" r="15" fill="#FFFFFF" stroke="#14201B" stroke-width="5"></circle>
+<g stroke="#E0A21B" stroke-width="2" stroke-linecap="round"><path d="M38 15.5v2.5M38 30v2.5M29.5 24h2.5M44 24h2.5M32 18l1.8 1.8M42.2 28.2L44 30M32 30l1.8-1.8M42.2 19.8L44 18"></path></g>
+<circle cx="38" cy="24" r="4" fill="#E0A21B"></circle>
+<g fill="#3E86C0"><rect x="16" y="47" width="4" height="9" rx="2" transform="rotate(18 18 51)"></rect><rect x="28" y="47" width="4" height="9" rx="2" transform="rotate(18 30 51)"></rect><rect x="40" y="47" width="4" height="9" rx="2" transform="rotate(18 42 51)"></rect></g>
+</svg><span>Sillage</span></a>
+<a class="lang" href="/confidentialite/" hreflang="fr">Français</a>
+</div></header>
+<main>
+<p class="kicker">Sillage</p>
+<h1>Privacy</h1>
+<p class="lead">What Sillage keeps of your data, why, for how long, and how to erase it all.</p>
+<p class="date">Version of 29 October 2026</p>
+
+<div class="promise"><p style="margin:0"><strong>In short:</strong> we only keep what we need to give you the weather along your route. No ads, no data selling, no tracking.</p></div>
+
+<h2>Who is responsible?</h2>
+<p>The <strong>Beyond the Track</strong> association, publisher of Sillage (details in the <a href="/en/legal-notice/">legal notice</a>). For any question about your data: <a href="mailto:hello@sillage-ride.eu">hello@sillage-ride.eu</a>.</p>
+
+<h2>What we keep, and why</h2>
+<h3>Your account</h3>
+<p>Your e-mail and password (encrypted: nobody can read it, not even us), and your first name if you give it, to sign you in and recognise you on all your devices.</p>
+<h3>Your routes</h3>
+<p>The GPX tracks you import (points, distance, elevation, name) and when you last used them, so you find them everywhere. Your routes are visible only to you.</p>
+<h3>Your weather alerts</h3>
+<p>The route, start time, days, language, units and time zone, plus the technical identifier of your device, to send you the notification at the right time.</p>
+<h3>Usage log</h3>
+<p>App launches, GPX imports, weather calculations and meteoblue forecast usage, to manage quotas, keep the service secure and improve the app.</p>
+<h3>Newsletter (if you sign up)</h3>
+<p>Your e-mail, first name, profile (rider or organiser) and, for organisers, the name and type of your event.</p>
+<h3>Visit statistics</h3>
+<p>A random identifier (no cookie), the page viewed and the device type. <strong>On the website only</strong>, we add the approximate city derived from your IP address; the IP address itself is never stored. <strong>The iPhone and Android app collects no location at all.</strong></p>
+
+<h2>How long</h2>
+<table>
+<thead><tr><th>Data</th><th>Retention</th></tr></thead>
+<tbody>
+<tr><td>Account, routes, alerts</td><td>Until you delete your account. An account with no sign-in for <strong>3 years</strong> is deleted, after a warning e-mail one month before.</td></tr>
+<tr><td>Usage log</td><td>12 months</td></tr>
+<tr><td>Visit statistics</td><td>25 months</td></tr>
+<tr><td>Newsletter</td><td>Until you unsubscribe</td></tr>
+</tbody>
+</table>
+
+<h2>Legal basis</h2>
+<ul>
+<li><strong>The service you use</strong>: account, routes, alerts, usage log.</li>
+<li><strong>Your consent</strong>: newsletter and notifications. You can withdraw it at any time.</li>
+<li><strong>Our legitimate interest</strong>: security and anonymous visit statistics. You can object by writing to us.</li>
+</ul>
+
+<h2>Who else sees your data</h2>
+<p>Only the technical services that run Sillage, each for its own task:</p>
+<ul>
+<li><strong>Supabase</strong> (servers in Frankfurt, Germany): storage of accounts, routes and alerts.</li>
+<li><strong>Brevo</strong> (France): sending e-mails (account, newsletter).</li>
+<li><strong>Google Firebase</strong>: sending notifications on iPhone and Android.</li>
+<li><strong>OVH</strong> (France): domain name and mailbox.</li>
+<li><strong>GitHub</strong>: website hosting.</li>
+<li><strong>ipapi.co / ipwho.is</strong>: approximate city of website visits.</li>
+<li><strong>Weather and map services</strong> (Open-Meteo, meteoblue, MET Norway, OpenStreetMap, IGN…): they receive coordinates along your route to compute the weather or display the map. Never your name or e-mail.</li>
+</ul>
+<p>Some of these services are based in the United States. These transfers are covered by the safeguards of the GDPR (EU-US Data Privacy Framework adequacy decision or standard contractual clauses).</p>
+
+<h2>Your rights</h2>
+<p>You can access, correct, export or delete your data, and object to some processing. Just write to <a href="mailto:hello@sillage-ride.eu">hello@sillage-ride.eu</a>: we reply within one month.</p>
+<p>If you believe your rights are not respected, you can lodge a complaint with the <a href="https://www.cnil.fr/en/complaints">CNIL</a> (French data protection authority).</p>
+
+<h2>On your device</h2>
+<p>Sillage keeps your settings (theme, units, language, last opened route…) and a forecast cache in your browser or phone storage. They are only used to run the app. There are no advertising cookies and no tracking tools.</p>
+
+<h2>Changes</h2>
+<p>If this page changes significantly, we will let you know in the app or by e-mail. The date of the latest version is shown at the top.</p>
+
+</main>
+<footer><div class="foot">
+<span>© 2026 Sillage · Weather along your route.</span>
+<nav aria-label="Legal links"><a href="/en/legal-notice/">Legal notice</a><a href="/en/privacy/" aria-current="page">Privacy</a><a href="mailto:hello@sillage-ride.eu">Contact</a></nav>
+</div></footer>
+</body>
+</html>
