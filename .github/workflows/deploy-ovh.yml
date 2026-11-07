@@ -1,5 +1,6 @@
 # Déploie la vitrine sur l'hébergement OVH (dossier www) à chaque push sur main, ou à la demande.
-# Secrets du dépôt à créer : FTP_HOST, FTP_USER, FTP_PASSWORD (jamais dans le code).
+# Envoi par SFTP (port 22) : l'hébergement gratuit OVH n'accepte pas le FTPS.
+# Secrets du dépôt : FTP_HOST, FTP_USER, FTP_PASSWORD (jamais dans le code).
 name: Déployer sur OVH
 
 on:
@@ -17,19 +18,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Envoi par FTPS vers le dossier www
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          server-dir: ./www/
-          exclude: |
-            **/.git*
-            **/.git*/**
-            .github/**
-            tools/**
-            README.md
-            CNAME
-            .nojekyll
+      - name: Installer lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+
+      - name: Envoi par SFTP vers le dossier www
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          # Pas de --delete : on n'efface rien sur le serveur.
+          lftp -u "$FTP_USER","$FTP_PASSWORD" "sftp://$FTP_HOST" <<'EOF'
+          set sftp:auto-confirm yes
+          set net:max-retries 3
+          set net:timeout 30
+          mirror -R --verbose \
+            --exclude-glob .git* \
+            --exclude-glob .github/ \
+            --exclude-glob tools/ \
+            --exclude-glob README.md \
+            --exclude-glob CNAME \
+            --exclude-glob .nojekyll \
+            ./ www/
+          bye
+          EOF
