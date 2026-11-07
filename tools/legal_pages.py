@@ -79,8 +79,9 @@ def page(lang, title, desc, kicker, h1, lead, date_label, body, other_href, othe
 </main>
 <footer><div class="foot">
 <span>© 2026 Sillage · {'La météo sur ta trace.' if lang == 'fr' else 'Weather along your route.'}</span>
-<nav aria-label="{'Liens légaux' if lang == 'fr' else 'Legal links'}">{foot}</nav>
+<nav aria-label="{'Liens légaux' if lang == 'fr' else 'Legal links'}">{foot}<a href="#cookies" data-cookies>{'Gérer mes cookies' if lang == 'fr' else 'Manage cookies'}</a></nav>
 </div></footer>
+<script src="/consent.js" defer></script>
 </body>
 </html>
 """
@@ -157,7 +158,7 @@ Contact: <a href="mailto:hello@sillage-ride.eu">hello@sillage-ride.eu</a></p>
 
 # ---------------------------------------------------------------- Confidentialité
 CONF_FR = """
-<div class="promise"><p style="margin:0"><strong>En bref :</strong> on ne garde que ce qu'il faut pour te donner la météo sur ta trace. Pas de publicité, pas de revente, pas de pistage.</p></div>
+<div class="promise"><p style="margin:0"><strong>En bref :</strong> on ne garde que ce qu'il faut pour te donner la météo sur ta trace. Pas de publicité, pas de revente. Sur le site vitrine, une mesure d'audience, seulement si tu l'acceptes.</p></div>
 
 <h2>Qui est responsable ?</h2>
 <p>L'association <strong>Beyond the Track</strong>, éditrice de Sillage (coordonnées dans les <a href="/mentions-legales/">mentions légales</a>). Pour toute question sur tes données : <a href="mailto:hello@sillage-ride.eu">hello@sillage-ride.eu</a>.</p>
@@ -181,6 +182,9 @@ CONF_FR = """
 <p>Ton e-mail, ton prénom, ton profil (cycliste ou organisateur·rice) et, pour les organisateurs, le nom et le type de ton événement.</p>
 <h3>Les statistiques de visite</h3>
 <p>Un identifiant aléatoire (sans cookie), la page vue, le type d'appareil. <strong>Sur le site web uniquement</strong>, on ajoute la ville approximative déduite de ton adresse IP ; l'adresse IP elle-même n'est jamais conservée. <strong>Dans l'app iPhone et Android, aucune localisation n'est relevée.</strong></p>
+<h3 id="audience">La mesure d'audience de la vitrine (Google Analytics)</h3>
+<p>Sur le site <strong>sillage-ride.eu</strong> uniquement (pas dans l'app), et <strong>seulement si tu cliques sur « Tout accepter »</strong> dans le bandeau, on utilise Google Analytics pour compter les visites et savoir quelles pages sont lues. Google dépose alors deux cookies (<code>_ga</code> et <code>_ga_…</code>, 13 mois) et reçoit la page vue, la durée de la visite, le type d'appareil et de navigateur, le pays ou la ville approximative et la façon dont tu es arrivé·e. Ton adresse IP n'est pas conservée par Google Analytics. Les signaux Google et la personnalisation des annonces sont désactivés : ces données ne servent pas à de la publicité.</p>
+<p>Si tu refuses, ou tant que tu n'as pas choisi, <strong>rien n'est envoyé à Google et aucun cookie n'est déposé</strong>. Ton choix est gardé 6 mois sur ton appareil. Tu peux le changer à tout moment avec le lien « Gérer mes cookies » en bas de chaque page.</p>
 
 <h2>Combien de temps</h2>
 <table>
@@ -192,6 +196,7 @@ CONF_FR = """
 <tr><td>Journal d'utilisation</td><td>12 mois</td></tr>
 <tr><td>Décompte des traces du compte gratuit</td><td>13 mois</td></tr>
 <tr><td>Statistiques de visite</td><td>25 mois</td></tr>
+<tr><td>Mesure d'audience de la vitrine (Google Analytics)</td><td>Cookies : 13 mois. Données : 14 mois</td></tr>
 <tr><td>Lettre d'info</td><td>Jusqu'à ta désinscription</td></tr>
 </tbody>
 </table>
@@ -199,7 +204,7 @@ CONF_FR = """
 <h2>Sur quelle base</h2>
 <ul>
 <li><strong>Le service que tu utilises</strong> : compte, parcours, alertes, journal d'utilisation, contributions à la Carte.</li>
-<li><strong>Ton accord</strong> : lettre d'info et notifications. Tu peux le retirer à tout moment.</li>
+<li><strong>Ton accord</strong> : lettre d'info, notifications et mesure d'audience de la vitrine. Tu peux le retirer à tout moment.</li>
 <li><strong>Notre intérêt légitime</strong> : sécurité et statistiques de visite anonymes. Tu peux t'y opposer en nous écrivant.</li>
 </ul>
 
@@ -210,6 +215,7 @@ CONF_FR = """
 <li><strong>Apple et Google</strong> : connexion avec Apple ou Google, si tu choisis ce mode.</li>
 <li><strong>Brevo</strong> (France) : envoi des e-mails (compte, lettre d'info).</li>
 <li><strong>Google Firebase</strong> : envoi des notifications sur iPhone et Android.</li>
+<li><strong>Google Analytics</strong> (Google Ireland Limited) : mesure d'audience de la vitrine, seulement avec ton accord.</li>
 <li><strong>OVH</strong> (France) : hébergement du site, nom de domaine et boîte e-mail.</li>
 <li><strong>ipapi.co / ipwho.is</strong> : ville approximative des visites du site web.</li>
 <li><strong>Serveurs Overpass d'OpenStreetMap</strong> (overpass-api.de, exploité par l'association allemande FOSSGIS ; overpass.private.coffee, exploité par l'association autrichienne Private.coffee) : ils reçoivent des coordonnées le long de ta trace pour chercher les lieux utiles (ravitos, hébergements, points de la Carte). Jamais ton nom ni ton e-mail.</li>
@@ -223,14 +229,14 @@ CONF_FR = """
 <p>Si tu estimes que tes droits ne sont pas respectés, tu peux saisir la <a href="https://www.cnil.fr/fr/plaintes">CNIL</a>.</p>
 
 <h2>Sur ton appareil</h2>
-<p>Sillage garde tes réglages (thème, unités, langue, dernier parcours ouvert…) et un cache des prévisions dans la mémoire de ton navigateur ou de ton téléphone. Ils servent seulement au fonctionnement de l'app. Il n'y a ni cookie publicitaire ni outil de pistage.</p>
+<p>Sillage garde tes réglages (thème, unités, langue, dernier parcours ouvert…) et un cache des prévisions dans la mémoire de ton navigateur ou de ton téléphone. Ils servent seulement au fonctionnement de l'app. Dans l'app, il n'y a ni cookie publicitaire ni outil de pistage. Sur le site vitrine, les cookies de mesure d'audience ne sont déposés que si tu les acceptes (voir plus haut).</p>
 
 <h2>Changements</h2>
 <p>Si cette page change de façon importante, on te prévient dans l'app ou par e-mail. La date de la dernière version est indiquée en haut.</p>
 """
 
 CONF_EN = """
-<div class="promise"><p style="margin:0"><strong>In short:</strong> we only keep what we need to give you the weather along your route. No ads, no data selling, no tracking.</p></div>
+<div class="promise"><p style="margin:0"><strong>In short:</strong> we only keep what we need to give you the weather along your route. No ads, no data selling. On the website, audience measurement only if you accept it.</p></div>
 
 <h2>Who is responsible?</h2>
 <p>The <strong>Beyond the Track</strong> association, publisher of Sillage (details in the <a href="/en/legal-notice/">legal notice</a>). For any question about your data: <a href="mailto:hello@sillage-ride.eu">hello@sillage-ride.eu</a>.</p>
@@ -254,6 +260,9 @@ CONF_EN = """
 <p>Your e-mail, first name, profile (rider or organiser) and, for organisers, the name and type of your event.</p>
 <h3>Visit statistics</h3>
 <p>A random identifier (no cookie), the page viewed and the device type. <strong>On the website only</strong>, we add the approximate city derived from your IP address; the IP address itself is never stored. <strong>The iPhone and Android app collects no location at all.</strong></p>
+<h3 id="audience">Website audience measurement (Google Analytics)</h3>
+<p>On the <strong>sillage-ride.eu</strong> website only (not in the app), and <strong>only if you click "Accept all"</strong> in the banner, we use Google Analytics to count visits and see which pages are read. Google then sets two cookies (<code>_ga</code> and <code>_ga_…</code>, 13 months) and receives the page viewed, the visit duration, the device and browser type, the approximate country or city and how you arrived. Google Analytics does not keep your IP address. Google signals and ad personalisation are turned off: this data is not used for advertising.</p>
+<p>If you refuse, or until you choose, <strong>nothing is sent to Google and no cookie is set</strong>. Your choice is kept for 6 months on your device. You can change it at any time with the "Manage cookies" link at the bottom of every page.</p>
 
 <h2>How long</h2>
 <table>
@@ -265,6 +274,7 @@ CONF_EN = """
 <tr><td>Usage log</td><td>12 months</td></tr>
 <tr><td>Free account route count</td><td>13 months</td></tr>
 <tr><td>Visit statistics</td><td>25 months</td></tr>
+<tr><td>Website audience measurement (Google Analytics)</td><td>Cookies: 13 months. Data: 14 months</td></tr>
 <tr><td>Newsletter</td><td>Until you unsubscribe</td></tr>
 </tbody>
 </table>
@@ -272,7 +282,7 @@ CONF_EN = """
 <h2>Legal basis</h2>
 <ul>
 <li><strong>The service you use</strong>: account, routes, alerts, usage log, map contributions.</li>
-<li><strong>Your consent</strong>: newsletter and notifications. You can withdraw it at any time.</li>
+<li><strong>Your consent</strong>: newsletter, notifications and website audience measurement. You can withdraw it at any time.</li>
 <li><strong>Our legitimate interest</strong>: security and anonymous visit statistics. You can object by writing to us.</li>
 </ul>
 
@@ -283,6 +293,7 @@ CONF_EN = """
 <li><strong>Apple and Google</strong>: sign-in with Apple or Google, if you choose it.</li>
 <li><strong>Brevo</strong> (France): sending e-mails (account, newsletter).</li>
 <li><strong>Google Firebase</strong>: sending notifications on iPhone and Android.</li>
+<li><strong>Google Analytics</strong> (Google Ireland Limited): website audience measurement, only with your consent.</li>
 <li><strong>OVH</strong> (France): website hosting, domain name and mailbox.</li>
 <li><strong>ipapi.co / ipwho.is</strong>: approximate city of website visits.</li>
 <li><strong>OpenStreetMap Overpass servers</strong> (overpass-api.de, run by the German association FOSSGIS; overpass.private.coffee, run by the Austrian association Private.coffee): they receive coordinates along your route to look up useful places (food stops, accommodation, map points). Never your name or e-mail.</li>
@@ -296,7 +307,7 @@ CONF_EN = """
 <p>If you believe your rights are not respected, you can lodge a complaint with the <a href="https://www.cnil.fr/en/complaints">CNIL</a> (French data protection authority).</p>
 
 <h2>On your device</h2>
-<p>Sillage keeps your settings (theme, units, language, last opened route…) and a forecast cache in your browser or phone storage. They are only used to run the app. There are no advertising cookies and no tracking tools.</p>
+<p>Sillage keeps your settings (theme, units, language, last opened route…) and a forecast cache in your browser or phone storage. They are only used to run the app. In the app, there are no advertising cookies and no tracking tools. On the website, audience-measurement cookies are only set if you accept them (see above).</p>
 
 <h2>Changes</h2>
 <p>If this page changes significantly, we will let you know in the app or by e-mail. The date of the latest version is shown at the top.</p>
