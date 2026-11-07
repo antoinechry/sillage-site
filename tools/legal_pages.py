@@ -216,6 +216,7 @@ CONF_FR = """
 <li><strong>OVH</strong> (France) : nom de domaine et boîte e-mail.</li>
 <li><strong>GitHub</strong> : hébergement du site.</li>
 <li><strong>ipapi.co / ipwho.is</strong> : ville approximative des visites du site web.</li>
+<li><strong>Serveurs Overpass d'OpenStreetMap</strong> (overpass-api.de, exploité par l'association allemande FOSSGIS ; overpass.private.coffee, exploité par l'association autrichienne Private.coffee) : ils reçoivent des coordonnées le long de ta trace pour chercher les lieux utiles (ravitos, hébergements, points de la Carte). Jamais ton nom ni ton e-mail.</li>
 <li><strong>Services météo et cartes</strong> (Open-Meteo, MET Norway, OpenStreetMap, IGN…) : ils reçoivent des points de coordonnées le long de ta trace pour calculer la météo ou afficher la carte. Jamais ton nom ni ton e-mail.</li>
 </ul>
 <p>Certains de ces services sont situés aux États-Unis. Ces transferts sont encadrés par les garanties prévues par le RGPD (décision d'adéquation EU-US Data Privacy Framework ou clauses contractuelles types).</p>
@@ -289,6 +290,7 @@ CONF_EN = """
 <li><strong>OVH</strong> (France): domain name and mailbox.</li>
 <li><strong>GitHub</strong>: website hosting.</li>
 <li><strong>ipapi.co / ipwho.is</strong>: approximate city of website visits.</li>
+<li><strong>OpenStreetMap Overpass servers</strong> (overpass-api.de, run by the German association FOSSGIS; overpass.private.coffee, run by the Austrian association Private.coffee): they receive coordinates along your route to look up useful places (food stops, accommodation, map points). Never your name or e-mail.</li>
 <li><strong>Weather and map services</strong> (Open-Meteo, MET Norway, OpenStreetMap, IGN…): they receive coordinates along your route to compute the weather or display the map. Never your name or e-mail.</li>
 </ul>
 <p>Some of these services are based in the United States. These transfers are covered by the safeguards of the GDPR (EU-US Data Privacy Framework adequacy decision or standard contractual clauses).</p>
