@@ -3,8 +3,8 @@
 import os, sys, json
 
 ROOT = sys.argv[1]
-DATE_FR = "29 octobre 2026"
-DATE_EN = "29 October 2026"
+DATE_FR = "7 novembre 2026"
+DATE_EN = "7 November 2026"
 
 LOGO = """<svg width="40" height="37" viewBox="0 0 64 60" aria-hidden="true">
 <circle cx="17" cy="31" r="10" fill="#14201B"></circle>
@@ -172,6 +172,10 @@ CONF_FR = """
 <p>Si tu essaies Sillage sans compte, sur nos traces d'exemple, on crée un compte technique anonyme (sans e-mail ni nom) pour ouvrir la démo. Rien de ce que tu fais n'est enregistré. Pour éviter les abus, on compte les visites sans compte par adresse IP : l'adresse est transformée en une empreinte illisible qui change chaque jour, et effacée au bout de 2 jours.</p>
 <h3>Tes parcours</h3>
 <p>Les traces GPX que tu importes (points, distance, dénivelé, nom) et la date de leur dernière utilisation, pour les retrouver partout. Tes parcours ne sont visibles que par toi.</p>
+<h3>Connexion avec Apple ou Google</h3>
+<p>Si tu te connectes avec Apple ou Google, on reçoit de leur part ton adresse e-mail et ton prénom (ou l'adresse relais d'Apple si tu l'as choisie), jamais ton mot de passe. Ton compte Sillage se supprime comme les autres, avec un code envoyé par e-mail à la place du mot de passe.</p>
+<h3>La Carte des points utiles : points, avis et photos</h3>
+<p>Quand tu ajoutes un point (fontaine, boulangerie, bivouac…), une note, un avis, une photo, ou que tu réponds « toujours là ? », ces contributions sont <strong>publiques pour les autres personnes connectées à Sillage</strong>, avec <strong>ton prénom</strong>. Elles servent à partager les bons plans entre cyclistes. Les photos sont réduites et enregistrées sans leurs métadonnées (position GPS, appareil). Une personne peut signaler un avis ; l'équipe de Sillage peut valider, fusionner avec OpenStreetMap ou retirer un point ou un avis. Tu peux supprimer toi-même tes avis et tes points. Ta position GPS, quand tu te localises sur la Carte, reste sur ton téléphone : elle n'est jamais envoyée.</p>
 <h3>Tes alertes météo</h3>
 <p>Le parcours, l'heure de départ, les jours, ta langue, tes unités et ton fuseau horaire, plus l'identifiant technique de ton appareil, pour t'envoyer la notification au bon moment.</p>
 <h3>Le journal d'utilisation</h3>
@@ -186,6 +190,7 @@ CONF_FR = """
 <thead><tr><th>Donnée</th><th>Durée</th></tr></thead>
 <tbody>
 <tr><td>Compte, parcours, alertes</td><td>Jusqu'à la suppression de ton compte. Un compte sans aucune connexion pendant <strong>3 ans</strong> est supprimé, après un e-mail d'avertissement un mois avant.</td></tr>
+<tr><td>Points, avis et photos de la Carte</td><td>Jusqu'à leur suppression par toi ou à la suppression de ton compte : tout est alors effacé, photos comprises</td></tr>
 <tr><td>Mode démo</td><td>Compte technique effacé après <strong>30 jours</strong> sans visite ; empreinte de l'adresse IP effacée après 2 jours</td></tr>
 <tr><td>Journal d'utilisation</td><td>12 mois</td></tr>
 <tr><td>Décompte des traces du compte gratuit</td><td>13 mois</td></tr>
@@ -196,7 +201,7 @@ CONF_FR = """
 
 <h2>Sur quelle base</h2>
 <ul>
-<li><strong>Le service que tu utilises</strong> : compte, parcours, alertes, journal d'utilisation.</li>
+<li><strong>Le service que tu utilises</strong> : compte, parcours, alertes, journal d'utilisation, contributions à la Carte.</li>
 <li><strong>Ton accord</strong> : lettre d'info et notifications. Tu peux le retirer à tout moment.</li>
 <li><strong>Notre intérêt légitime</strong> : sécurité et statistiques de visite anonymes. Tu peux t'y opposer en nous écrivant.</li>
 </ul>
@@ -204,7 +209,8 @@ CONF_FR = """
 <h2>Qui d'autre voit tes données</h2>
 <p>Seulement les services techniques qui font tourner Sillage, chacun pour sa tâche :</p>
 <ul>
-<li><strong>Supabase</strong> (serveurs à Francfort, Allemagne) : stockage du compte, des parcours et des alertes.</li>
+<li><strong>Supabase</strong> (serveurs à Francfort, Allemagne) : stockage du compte, des parcours, des alertes et des contributions à la Carte (photos comprises).</li>
+<li><strong>Apple et Google</strong> : connexion avec Apple ou Google, si tu choisis ce mode.</li>
 <li><strong>Brevo</strong> (France) : envoi des e-mails (compte, lettre d'info).</li>
 <li><strong>Google Firebase</strong> : envoi des notifications sur iPhone et Android.</li>
 <li><strong>OVH</strong> (France) : nom de domaine et boîte e-mail.</li>
@@ -239,6 +245,10 @@ CONF_EN = """
 <p>If you try Sillage without an account, on our sample routes, we create an anonymous technical account (no e-mail, no name) to open the demo. Nothing you do is saved. To prevent abuse, we count visits without an account per IP address: the address is turned into an unreadable fingerprint that changes every day, and erased after 2 days.</p>
 <h3>Your routes</h3>
 <p>The GPX tracks you import (points, distance, elevation, name) and when you last used them, so you find them everywhere. Your routes are visible only to you.</p>
+<h3>Sign in with Apple or Google</h3>
+<p>If you sign in with Apple or Google, they give us your e-mail address and first name (or Apple's relay address if you chose it), never your password. Your Sillage account is deleted like any other, using a code sent by e-mail instead of the password.</p>
+<h3>The useful-points map: points, reviews and photos</h3>
+<p>When you add a point (fountain, bakery, bivouac…), a rating, a review, a photo, or answer “still there?”, these contributions are <strong>public to other people signed in to Sillage</strong>, with <strong>your first name</strong>. They exist so riders can share good spots. Photos are resized and saved without their metadata (GPS position, device). Anyone can report a review; the Sillage team can validate, merge with OpenStreetMap or remove a point or a review. You can delete your own reviews and points. Your GPS position, when you locate yourself on the map, stays on your phone and is never sent.</p>
 <h3>Your weather alerts</h3>
 <p>The route, start time, days, language, units and time zone, plus the technical identifier of your device, to send you the notification at the right time.</p>
 <h3>Usage log</h3>
@@ -253,6 +263,7 @@ CONF_EN = """
 <thead><tr><th>Data</th><th>Retention</th></tr></thead>
 <tbody>
 <tr><td>Account, routes, alerts</td><td>Until you delete your account. An account with no sign-in for <strong>3 years</strong> is deleted, after a warning e-mail one month before.</td></tr>
+<tr><td>Map points, reviews and photos</td><td>Until you delete them or delete your account: everything, photos included, is then erased</td></tr>
 <tr><td>Demo mode</td><td>Technical account erased after <strong>30 days</strong> without a visit; IP fingerprint erased after 2 days</td></tr>
 <tr><td>Usage log</td><td>12 months</td></tr>
 <tr><td>Free account route count</td><td>13 months</td></tr>
@@ -263,7 +274,7 @@ CONF_EN = """
 
 <h2>Legal basis</h2>
 <ul>
-<li><strong>The service you use</strong>: account, routes, alerts, usage log.</li>
+<li><strong>The service you use</strong>: account, routes, alerts, usage log, map contributions.</li>
 <li><strong>Your consent</strong>: newsletter and notifications. You can withdraw it at any time.</li>
 <li><strong>Our legitimate interest</strong>: security and anonymous visit statistics. You can object by writing to us.</li>
 </ul>
@@ -271,7 +282,8 @@ CONF_EN = """
 <h2>Who else sees your data</h2>
 <p>Only the technical services that run Sillage, each for its own task:</p>
 <ul>
-<li><strong>Supabase</strong> (servers in Frankfurt, Germany): storage of accounts, routes and alerts.</li>
+<li><strong>Supabase</strong> (servers in Frankfurt, Germany): storage of accounts, routes, alerts and map contributions (photos included).</li>
+<li><strong>Apple and Google</strong>: sign-in with Apple or Google, if you choose it.</li>
 <li><strong>Brevo</strong> (France): sending e-mails (account, newsletter).</li>
 <li><strong>Google Firebase</strong>: sending notifications on iPhone and Android.</li>
 <li><strong>OVH</strong> (France): domain name and mailbox.</li>
@@ -299,12 +311,12 @@ DEL_FR = """
 <li>Ouvre Sillage : l'app sur ton téléphone, ou la <a href="https://antoinechry.github.io/plan-my-ride/">version web</a>. Connecte-toi.</li>
 <li>Va dans <strong>Moi</strong> (onglet en bas sur téléphone, à gauche sur ordinateur).</li>
 <li>Dans « Mon compte », touche <strong>Supprimer mon compte</strong>.</li>
-<li>Saisis ton mot de passe et confirme avec <strong>Supprimer définitivement</strong>.</li>
+<li>Saisis ton mot de passe (ou, si tu te connectes avec Apple ou Google, touche « Recevoir un code par e-mail » et saisis le code) et confirme avec <strong>Supprimer définitivement</strong>.</li>
 </ol>
 
 <h2>Ce qui est effacé</h2>
 <div class="card">
-<p>Immédiatement et définitivement : ton compte (e-mail, mot de passe, prénom), tes parcours, tes alertes météo, ton journal d'utilisation et ton inscription à la lettre d'info.</p>
+<p>Immédiatement et définitivement : ton compte (e-mail, mot de passe, prénom), tes parcours, tes alertes météo, tes points, avis, photos et « toujours là » de la Carte, ton journal d'utilisation et ton inscription à la lettre d'info.</p>
 </div>
 <p>Seules restent les statistiques de visite anonymes (identifiant aléatoire, sans lien avec ton compte), effacées au bout de 25 mois.</p>
 
@@ -323,12 +335,12 @@ DEL_EN = """
 <li>Open Sillage: the app on your phone, or the <a href="https://antoinechry.github.io/plan-my-ride/">web version</a>. Sign in.</li>
 <li>Go to <strong>Me</strong> (bottom tab on a phone, left side on a computer).</li>
 <li>Under “My account”, tap <strong>Delete my account</strong>.</li>
-<li>Enter your password and confirm with <strong>Delete permanently</strong>.</li>
+<li>Enter your password (or, if you sign in with Apple or Google, tap “Get a code by e-mail” and enter the code) and confirm with <strong>Delete permanently</strong>.</li>
 </ol>
 
 <h2>What gets erased</h2>
 <div class="card">
-<p>Immediately and for good: your account (e-mail, password, first name), your routes, your weather alerts, your usage log and your newsletter subscription.</p>
+<p>Immediately and for good: your account (e-mail, password, first name), your routes, your weather alerts, your map points, reviews, photos and “still there” answers, your usage log and your newsletter subscription.</p>
 </div>
 <p>Only anonymous visit statistics remain (a random identifier with no link to your account), erased after 25 months.</p>
 
