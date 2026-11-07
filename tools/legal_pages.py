@@ -107,7 +107,6 @@ Contact : <a href="mailto:hello@sillage-ride.eu">hello@sillage-ride.eu</a></p>
 <h2>Hébergement</h2>
 <ul>
 <li><strong>Site sillage-ride.eu, nom de domaine et boîte e-mail</strong> : OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.</li>
-<li><strong>Version web de l'application</strong> : GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis (GitHub Pages).</li>
 <li><strong>Données de l'application</strong> (comptes, parcours, alertes) : Supabase, serveurs situés à Francfort, Allemagne.</li>
 </ul>
 
@@ -140,7 +139,6 @@ Contact: <a href="mailto:hello@sillage-ride.eu">hello@sillage-ride.eu</a></p>
 <h2>Hosting</h2>
 <ul>
 <li><strong>sillage-ride.eu website, domain name and mailbox</strong>: OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.</li>
-<li><strong>Web version of the app</strong>: GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA (GitHub Pages).</li>
 <li><strong>App data</strong> (accounts, routes, alerts): Supabase, servers in Frankfurt, Germany.</li>
 </ul>
 
@@ -214,7 +212,6 @@ CONF_FR = """
 <li><strong>Brevo</strong> (France) : envoi des e-mails (compte, lettre d'info).</li>
 <li><strong>Google Firebase</strong> : envoi des notifications sur iPhone et Android.</li>
 <li><strong>OVH</strong> (France) : hébergement du site, nom de domaine et boîte e-mail.</li>
-<li><strong>GitHub</strong> : hébergement de la version web de l'application.</li>
 <li><strong>ipapi.co / ipwho.is</strong> : ville approximative des visites du site web.</li>
 <li><strong>Serveurs Overpass d'OpenStreetMap</strong> (overpass-api.de, exploité par l'association allemande FOSSGIS ; overpass.private.coffee, exploité par l'association autrichienne Private.coffee) : ils reçoivent des coordonnées le long de ta trace pour chercher les lieux utiles (ravitos, hébergements, points de la Carte). Jamais ton nom ni ton e-mail.</li>
 <li><strong>Services météo et cartes</strong> (Open-Meteo, MET Norway, OpenStreetMap, IGN…) : ils reçoivent des points de coordonnées le long de ta trace pour calculer la météo ou afficher la carte. Jamais ton nom ni ton e-mail.</li>
@@ -288,7 +285,6 @@ CONF_EN = """
 <li><strong>Brevo</strong> (France): sending e-mails (account, newsletter).</li>
 <li><strong>Google Firebase</strong>: sending notifications on iPhone and Android.</li>
 <li><strong>OVH</strong> (France): website hosting, domain name and mailbox.</li>
-<li><strong>GitHub</strong>: hosting of the web version of the app.</li>
 <li><strong>ipapi.co / ipwho.is</strong>: approximate city of website visits.</li>
 <li><strong>OpenStreetMap Overpass servers</strong> (overpass-api.de, run by the German association FOSSGIS; overpass.private.coffee, run by the Austrian association Private.coffee): they receive coordinates along your route to look up useful places (food stops, accommodation, map points). Never your name or e-mail.</li>
 <li><strong>Weather and map services</strong> (Open-Meteo, MET Norway, OpenStreetMap, IGN…): they receive coordinates along your route to compute the weather or display the map. Never your name or e-mail.</li>
