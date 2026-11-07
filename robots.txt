@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /compte-confirme/
+Disallow: /en/account-confirmed/
+
+Sitemap: https://sillage-ride.eu/sitemap.xml

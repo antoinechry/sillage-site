@@ -59,7 +59,6 @@ def page(lang, title, desc, kicker, h1, lead, date_label, body, other_href, othe
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<meta name="robots" content="noindex">
 <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -449,7 +448,9 @@ def confirm_page(lang):
         "Sillage", "Confirmation" , "", "", confirm_body(lang),
         "/en/account-confirmed/" if fr else "/compte-confirme/", "English" if fr else "Français", "/",
         FOOT_FR if fr else FOOT_EN, "")
-    return html.replace('<p class="date"></p>\n', '')
+    html = html.replace('<p class="date"></p>\n', '')
+    # Page d'un lien à usage unique : jamais indexée.
+    return html.replace('<link rel="icon"', '<meta name="robots" content="noindex">\n<link rel="icon"', 1)
 
 PAGES += [("compte-confirme/index.html", confirm_page("fr")), ("en/account-confirmed/index.html", confirm_page("en"))]
 
