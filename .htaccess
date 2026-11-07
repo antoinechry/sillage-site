@@ -1,0 +1,13 @@
+# Vitrine Sillage sur OVH.
+# HTTPS forcé seulement pour sillage-ride.eu (l'adresse technique de l'hébergement n'a pas de certificat).
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP_HOST} ^(www\.)?sillage-ride\.eu$ [NC]
+RewriteRule ^ https://sillage-ride.eu%{REQUEST_URI} [L,R=301]
+
+# www.sillage-ride.eu -> sillage-ride.eu
+RewriteCond %{HTTP_HOST} ^www\.sillage-ride\.eu$ [NC]
+RewriteRule ^ https://sillage-ride.eu%{REQUEST_URI} [L,R=301]
+
+DirectoryIndex index.html
+Options -Indexes

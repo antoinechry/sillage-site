@@ -1,0 +1,35 @@
+# Déploie la vitrine sur l'hébergement OVH (dossier www) à chaque push sur main, ou à la demande.
+# Secrets du dépôt à créer : FTP_HOST, FTP_USER, FTP_PASSWORD (jamais dans le code).
+name: Déployer sur OVH
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-ovh
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Envoi par FTPS vers le dossier www
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          server-dir: ./www/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            tools/**
+            README.md
+            CNAME
+            .nojekyll
