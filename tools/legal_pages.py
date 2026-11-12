@@ -182,6 +182,8 @@ CONF_FR = """
 <p>Ton e-mail, ton prénom, ton profil (cycliste ou organisateur·rice) et, pour les organisateurs, le nom et le type de ton événement.</p>
 <h3>Les statistiques de visite</h3>
 <p>Un identifiant aléatoire (sans cookie), la page vue, le type d'appareil. <strong>Sur le site web uniquement</strong>, on ajoute la ville approximative déduite de ton adresse IP ; l'adresse IP elle-même n'est jamais conservée. <strong>Dans l'app iPhone et Android, aucune localisation n'est relevée.</strong></p>
+<h3 id="liens">La page « liens » (lien en bio)</h3>
+<p>Sur la page <strong>sillage-ride.eu/liens</strong>, on compte, sans cookie et sans identifiant, les visites, les liens cliqués, les débuts de saisie et les inscriptions, avec le réseau d'où vient la visite (Instagram, Facebook…). Rien ne permet de savoir qui tu es : ni adresse IP, ni e-mail, ni identifiant ne sont enregistrés avec ces chiffres.</p>
 <h3 id="audience">La mesure d'audience de la vitrine (Google Analytics)</h3>
 <p>Sur le site <strong>sillage-ride.eu</strong> uniquement (pas dans l'app), et <strong>seulement si tu cliques sur « Tout accepter »</strong> dans le bandeau, on utilise Google Analytics pour compter les visites et savoir quelles pages sont lues. Google dépose alors deux cookies (<code>_ga</code> et <code>_ga_…</code>, 13 mois) et reçoit la page vue, la durée de la visite, le type d'appareil et de navigateur, le pays ou la ville approximative et la façon dont tu es arrivé·e. Ton adresse IP n'est pas conservée par Google Analytics. Les signaux Google et la personnalisation des annonces sont désactivés : ces données ne servent pas à de la publicité.</p>
 <p>Si tu refuses, ou tant que tu n'as pas choisi, <strong>rien n'est envoyé à Google et aucun cookie n'est déposé</strong>. Ton choix est gardé 6 mois sur ton appareil. Tu peux le changer à tout moment avec le lien « Gérer mes cookies » en bas de chaque page.</p>
@@ -196,6 +198,7 @@ CONF_FR = """
 <tr><td>Journal d'utilisation</td><td>12 mois</td></tr>
 <tr><td>Décompte des traces du compte gratuit</td><td>13 mois</td></tr>
 <tr><td>Statistiques de visite</td><td>25 mois</td></tr>
+<tr><td>Comptage de la page « liens »</td><td>25 mois</td></tr>
 <tr><td>Mesure d'audience de la vitrine (Google Analytics)</td><td>Cookies : 13 mois. Données : 14 mois</td></tr>
 <tr><td>Lettre d'info</td><td>Jusqu'à ta désinscription</td></tr>
 </tbody>
@@ -260,6 +263,8 @@ CONF_EN = """
 <p>Your e-mail, first name, profile (rider or organiser) and, for organisers, the name and type of your event.</p>
 <h3>Visit statistics</h3>
 <p>A random identifier (no cookie), the page viewed and the device type. <strong>On the website only</strong>, we add the approximate city derived from your IP address; the IP address itself is never stored. <strong>The iPhone and Android app collects no location at all.</strong></p>
+<h3 id="links">The "links" page (link in bio)</h3>
+<p>On the <strong>sillage-ride.eu/liens</strong> page, we count, without cookies or identifiers, visits, links clicked, form starts and sign-ups, with the network the visit comes from (Instagram, Facebook…). Nothing can tell who you are: no IP address, e-mail or identifier is stored with these figures.</p>
 <h3 id="audience">Website audience measurement (Google Analytics)</h3>
 <p>On the <strong>sillage-ride.eu</strong> website only (not in the app), and <strong>only if you click "Accept all"</strong> in the banner, we use Google Analytics to count visits and see which pages are read. Google then sets two cookies (<code>_ga</code> and <code>_ga_…</code>, 13 months) and receives the page viewed, the visit duration, the device and browser type, the approximate country or city and how you arrived. Google Analytics does not keep your IP address. Google signals and ad personalisation are turned off: this data is not used for advertising.</p>
 <p>If you refuse, or until you choose, <strong>nothing is sent to Google and no cookie is set</strong>. Your choice is kept for 6 months on your device. You can change it at any time with the "Manage cookies" link at the bottom of every page.</p>
@@ -274,6 +279,7 @@ CONF_EN = """
 <tr><td>Usage log</td><td>12 months</td></tr>
 <tr><td>Free account route count</td><td>13 months</td></tr>
 <tr><td>Visit statistics</td><td>25 months</td></tr>
+<tr><td>"Links" page counts</td><td>25 months</td></tr>
 <tr><td>Website audience measurement (Google Analytics)</td><td>Cookies: 13 months. Data: 14 months</td></tr>
 <tr><td>Newsletter</td><td>Until you unsubscribe</td></tr>
 </tbody>
